@@ -65,7 +65,7 @@ if selected_year in fashion_trends:
     # 데이터 시각화
     if not data.empty and all(keyword in data.columns for keyword in keywords):
         data = data.drop(columns=['isPartial'])  # 불완전한 데이터 열 제거
-        st.write("### 해당 연도 패션 트렌드 검색 인기도")
+        st.write("해당 연도 패션 트렌드 검색 인기도")
         
         fig, ax = plt.subplots(figsize=(10, 6))
         for keyword in keywords:
@@ -81,7 +81,7 @@ else:
     st.write("선택한 연도의 데이터를 찾을 수 없습니다.")
 
 # 전체 연도별 패션 정보 요약표
-st.write("### 전체 연도별 패션 정보 및 철학 요약")
+st.write("전체 연도별 패션 정보 및 철학 요약")
 df = pd.DataFrame(fashion_trends).T
 df.index.name = 'Year'
 st.dataframe(df)
