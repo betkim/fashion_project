@@ -1,1 +1,4 @@
 pytrends
+matplotlib 
+pandas
+streamlit
