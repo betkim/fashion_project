@@ -3,6 +3,13 @@ import streamlit as st
 from pytrends.request import TrendReq
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+
+# 한글 폰트 설정 (Windows와 Mac, Linux에 맞게 설정)
+# 시스템에 맞는 한글 폰트를 설정해 주세요. (예: 맑은 고딕, AppleGothic, 나눔고딕 등)
+plt.rc('font', family='Malgun Gothic')  # Windows에서는 Malgun Gothic 사용
+# plt.rc('font', family='AppleGothic')  # MacOS에서는 AppleGothic 사용
+plt.rcParams['axes.unicode_minus'] = False  # 마이너스 기호 깨짐 방지
 
 # Google Trends 연결 설정
 pytrends = TrendReq(hl='ko', tz=540)
@@ -56,7 +63,7 @@ if selected_year in fashion_trends:
     data = pytrends.interest_over_time()
 
     # 데이터 시각화
-    if not data.empty:
+    if not data.empty and all(keyword in data.columns for keyword in keywords):
         data = data.drop(columns=['isPartial'])  # 불완전한 데이터 열 제거
         st.write("### 해당 연도 패션 트렌드 검색 인기도")
         
@@ -69,7 +76,9 @@ if selected_year in fashion_trends:
         ax.legend()
         st.pyplot(fig)
     else:
-        st.write("데이터를 가져올 수 없습니다. 다른 연도를 선택해 주세요.")
+        st.write("데이터를 가져올 수 없습니다. 해당 연도에 대한 트렌드 데이터가 부족합니다.")
+else:
+    st.write("선택한 연도의 데이터를 찾을 수 없습니다.")
 
 # 전체 연도별 패션 정보 요약표
 st.write("### 전체 연도별 패션 정보 요약")
