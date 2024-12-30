@@ -4,7 +4,7 @@
 
 ## 📝 프로젝트 소개
 간단한 프로젝트 설명!
-[399200891-a7c4cdcb-7929-42ba-a685-77a2190e079c](https://github.com/user-attachments/assets/ae913dec-c299-467a-8110-ab02dcf2eb24)
+![Uploading 399200891-a7c4cdcb-7929-42ba-a685-77a2190e079c.gif…]()
 
 
 ## ⚒️ 기술 스택
